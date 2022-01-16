@@ -12,6 +12,7 @@ import { DateTime } from "luxon";
 
 let tempUnit = "C";
 let currentCity = "";
+let currentWeather;
 //default bg
 document.querySelector(
   "body"
@@ -29,10 +30,7 @@ document.querySelector(".unit").addEventListener("click", async () => {
     unit.textContent = "°C";
     tempUnit = "C";
   }
-  if (currentCity === "") return;
-  console.log(currentCity);
-  let weather = await getWeather(currentCity);
-  displayWeather(weather, tempUnit);
+  displayWeather(currentWeather, tempUnit);
 });
 //textarea enter submit
 document
@@ -42,22 +40,22 @@ document
     e.preventDefault();
     let city = e.target.value;
     currentCity = city;
-    let weather = await getWeather(city);
-    displayWeather(weather, tempUnit);
+    currentWeather = await getWeather(city);
+    displayWeather(currentWeather, tempUnit);
   });
 //search button
 document.querySelector(".searchBtn").addEventListener("click", async () => {
   let city = document.querySelector(".searchTextArea").value;
   currentCity = city;
-  let weather = await getWeather(city);
-  displayWeather(weather, tempUnit);
+  currentWeather = await getWeather(city);
+  displayWeather(currentWeather, tempUnit);
 });
 
 //default city
 (async function () {
-  currentCity = "New York";
-  let weather = await getWeather("New York");
-  displayWeather(weather, "C");
+  currentCity = "Geneva";
+  currentWeather = await getWeather("Geneva");
+  displayWeather(currentWeather, tempUnit);
 })();
 
 async function displayWeather(response, unit) {
@@ -78,7 +76,6 @@ async function displayWeather(response, unit) {
   const city = response[1];
   let decimal = 1;
   let date = dateAndTime(weather.timezone);
-  console.log(weather);
 
   //sets bg based on weather condition
   (function setBg() {
