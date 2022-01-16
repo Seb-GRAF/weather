@@ -1,7 +1,7 @@
 //api call to get city coords with name input in all languages
 async function getCity(name) {
   let city = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${name}&appid=6f129145a03503e8e226740cda23a4ab`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${name}&appid=6f129145a03503e8e226740cda23a4ab`
   );
   return await city.json();
 }
