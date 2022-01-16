@@ -267,13 +267,7 @@ header {
   }
 }
 .notFound {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
-  text-align: center;
-  padding: 2rem;
+  display: hidden;
 }
 
 @media only screen and (max-width: 700px) {

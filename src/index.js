@@ -63,9 +63,9 @@ document.querySelector(".searchBtn").addEventListener("click", async () => {
 async function displayWeather(response, unit) {
   if (!response) {
     document.querySelector(".card1").innerHTML = `
-    <h1>City not found</h1>`;
+    <h1 class ="notFound>City not found</h1>`;
     document.querySelector(".card2").innerHTML = `
-    <h1 class="notFound">Something went wrong</h1>`;
+    <h1 class="notFound"></h1>`;
     document.querySelector(".card3").innerHTML = `
     <h1 class="notFound">The city was not found, please search for an other city</h1>`;
     return;
